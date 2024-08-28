@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Carrito</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goBackToHome()">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of carrito$ | async">
+      <ion-label>
+        <h2>{{ item.title }}</h2>
+        <p>${{ item.price | currency: 'USD': 'symbol' }}</p>
+      </ion-label>
+      <ion-button fill="clear" (click)="removeItem(item)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>
+      <h2>Total</h2>
+      <p>${{ total$ | async | currency: 'USD': 'symbol' }}</p>
+    </ion-label>
+  </ion-item>
+
+  
+  <div class="button-container">
+    <ion-button expand="block" color="primary" (click)="processPayment()">
+      Payment
+    </ion-button>
+  </div>
+</ion-content>

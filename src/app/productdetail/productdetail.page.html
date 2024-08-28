@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ product?.title }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBackToHome()" class="highlight-icon">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="card-container">
+    <ion-img [src]="product?.image" class="small-image"></ion-img>
+    <ion-card-content>
+      <ion-card-title>{{ product?.title }}</ion-card-title>
+      <p>{{ product?.description }}</p>
+      <p>${{ product?.price | currency:'USD': 'symbol'  }}</p>
+      <p>Bought: {{ product?.rating?.count }}+</p> 
+      <p>Rating: {{ product?.rating?.rate }} ★</p> 
+    </ion-card-content>
+  </ion-card>
+<div class="button-container">
+  <ion-button  color="primary" (click)="addToCart()">
+    Add to Cart
+  </ion-button>
+</div>
+</ion-content>
